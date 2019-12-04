@@ -3,4 +3,4 @@ image:
 
 tasks:
   - init: mkdir ../go ../go/bin && pip3 install -r requirements.txt
-    command: gosh
+    command: make deps && make test
