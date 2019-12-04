@@ -2,5 +2,5 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - init: mkdir ../go ../go/bin && ./setup.sh && pip3 install -r requirements.txt
+  - init: mkdir ../go ../go/bin && pip3 install -r requirements.txt
     command: gosh
