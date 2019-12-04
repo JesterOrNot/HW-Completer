@@ -35,9 +35,18 @@ def solve_by_factor(a, b, c):
 def read_pdf_to_string(file_name):
     return parser.from_file(file_name)['content']
 
+# This regex should find all quadratics and return them
+
+
+def get_all_equations(text):
+    regex = r"(?:(-?\d*x\^2\+?-?\d*x\+?-?\d*|x\^2\+?-?\d*x\+?(\d*))|(-?\d*x\^2|x\^2)|(-?\d*x\^2\+?-?\d*|x\^2\+?-?\d*))|(-?\d*x\^2\+?-?\d*x|x\^2\+?-?\d*x)|(\(x\+?-?\d*\)\^2\+?-?\d*)|(-?\d*\(x\+?-?\d*\)\^2(\+?-?\d*))|(-?\d*\(x\+?-?\d*\)\^2)|(\(x\+?-?\d*\)\^2)"
+    unfiltered = re.findall(regex, text)
+    return [j for i in unfiltered for j in i if len(j) != 0]
+
 
 def quadFinder(text):
-    regex = r"(?:(?:(\d)*x\^2(?:\+|-)(\d)*x(?:\+|-)(\d)*|x\^2(?:\+|-)(\d)*x(?:\+|-)(\d*))|(?:(\d)*x\^2|x\^2)|(?:(\d)*x\^2(?:\+|-)(\d)*|x\^2(?:\+|-)(\d)*))|(?:(\d)*x\^2(?:\+|-)(\d)*x|x\^2(?:\+|-)(\d)*x)|(?:\(x(?:\+|-)(\d)*\)\^2((?:\+|-)(\d)*))|(?:(\d)*\(x(?:\+|-)(\d)*\)\^2((?:\+|-)(\d)*))|(?:(\d)*\(x(?:\+|-)(\d)*\)\^2)|(?: \(x(?:\+|-)(\d)*\)\^2)"
+    # WIP regex
+    regex = r"(?:(?:(-?\d)*x\^2(?:\+|-)(-?\d)*x(?:\+|-)(-?\d)*|x\^2(?:\+|-)(-?\d)*x(?:\+|-)(\d*))|(?:(-?\d)*x\^2|x\^2)|(?:(-?\d)*x\^2(?:\+|-)(-?\d)*|x\^2(?:\+|-)(-?\d)*))|(?:(-?\d)*x\^2(?:\+|-)(-?\d)*x|x\^2(?:\+|-)(-?\d)*x)|(?:\(x(?:\+|-)(-?\d)*\)\^2((?:\+|-)(-?\d)*))|(?:(-?\d)*\(x(?:\+|-)(-?\d)*\)\^2((?:\+|-)(-?\d)*))|(?:(-?\d)*\(x(?:\+|-)(-?\d)*\)\^2)|(?: \(x(?:\+|-)(-?\d)*\)\^2)"
     unfiltered_matches = re.findall(regex, text)
     filtered_matches = []
     for i in unfiltered_matches:
