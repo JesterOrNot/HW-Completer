@@ -1,3 +1,8 @@
+import re
+
+from tika import parser
+
+
 def factor(a, b, c):
     for i in range(30):
         for j in range(30):
@@ -6,7 +11,7 @@ def factor(a, b, c):
 
 
 def factor_readable(a, b, c):
-    for i in range(c, 30):
+    for i in range(-30, 30):
         for j in range(-30, 30):
             if i*j == c and i+j == b:
                 if i > 0 and j > 0:
@@ -49,4 +54,5 @@ def main(text):
     print(factor_readable(data[0], data[1], data[2]))
 
 
-main("2x^2+3x+2")
+if __name__ == "__main__":
+    main("2x^2+3x+2")
